@@ -3,6 +3,8 @@ package space;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import javax.swing.JFrame;
+
 import static java.lang.Math.sqrt;
 
 public class PhysicalObject {
@@ -13,6 +15,13 @@ public class PhysicalObject {
     public double vx;
     public double vy;
     public double radius;
+    static boolean IS_BOUNCING_BALLS = false;
+    public static final double EARTH_WEIGHT = 5.9736e24;
+    static JFrame frame;
+    static double scale = 10;
+    static double centrey = 0.0;
+    static double centrex = 0.0;
+    public static double seconds = 1;
 
     public PhysicalObject(double weightKilos, double x, double y, double vx,
                           double vy, double radius) {
@@ -38,7 +47,7 @@ public class PhysicalObject {
         // find collision point by backstepping
 
         //backstep increment
-        final double s = -Space.seconds / 10;
+        final double s = -PhysicalObject.seconds / 10;
         //total backstep size to be found incrementally
         double dt = 0;
         //vector from this object to the other object
@@ -107,11 +116,11 @@ public class PhysicalObject {
     }
 
     public void paintPhysicalObject(Graphics2D graphics) {
-        if (!Space.IS_BOUNCING_BALLS) {
-            graphics.setColor(Space.weightToColor(mass));
-            int diameter = mass >= Space.EARTH_WEIGHT * 10000 ? 7 : 2;
-            int xtmp = (int) ((x - Space.centrex) / Space.scale + Space.frame.getSize().width / 2);
-            int ytmp = (int) ((y - Space.centrey) / Space.scale + Space.frame.getSize().height / 2);
+        if (!PhysicalObject.IS_BOUNCING_BALLS) {
+            graphics.setColor(PhysicalObject.weightToColor(mass));
+            int diameter = mass >= PhysicalObject.EARTH_WEIGHT * 10000 ? 7 : 2;
+            int xtmp = (int) ((x - PhysicalObject.centrex) / PhysicalObject.scale + PhysicalObject.frame.getSize().width / 2);
+            int ytmp = (int) ((y - PhysicalObject.centrey) / PhysicalObject.scale + PhysicalObject.frame.getSize().height / 2);
             graphics.fillOval(
                     xtmp-diameter/2,
                     ytmp-diameter/2,
@@ -119,13 +128,26 @@ public class PhysicalObject {
                     diameter);
         } else { //BREAKOUT
             graphics.setColor(Color.WHITE);
-            int xtmp = (int) ((x - Space.centrex)  + Space.frame.getSize().width / 2);
-            int ytmp = (int) ((y - Space.centrey)  + Space.frame.getSize().height / 2);
+            int xtmp = (int) ((x - PhysicalObject.centrex)  + PhysicalObject.frame.getSize().width / 2);
+            int ytmp = (int) ((y - PhysicalObject.centrey)  + PhysicalObject.frame.getSize().height / 2);
             graphics.fillOval(
                     (int) (xtmp - radius ),
                     (int) (ytmp - radius ),
                     (int) (2 * radius),
                     (int) (2 * radius));
         }
+    }
+
+    public static Color weightToColor(double weight) {
+        if (weight < 1e10) return Color.GREEN;
+        if (weight < 1e12) return Color.CYAN;
+        if (weight < 1e14) return Color.MAGENTA;
+        if (weight < 1e16) return Color.BLUE;
+        if (weight < 1e18) return Color.GRAY;
+        if (weight < 1e20) return Color.RED;
+        if (weight < 1e22) return Color.ORANGE;
+        if (weight < 1e25) return Color.PINK;
+        if (weight < 1e28) return Color.YELLOW;
+        return Color.WHITE;
     }
 }
