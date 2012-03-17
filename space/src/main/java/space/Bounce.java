@@ -1,5 +1,6 @@
 package space;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseWheelEvent;
 import java.lang.reflect.InvocationTargetException;
@@ -71,7 +72,7 @@ public class Bounce extends Space {
 
     @Override
     protected void doPaintObject(Graphics2D graphics, PhysicalObject po) {
-        po.paintPhysicalObject(graphics, false);
+        po.paintPhysicalObject(graphics, Color.WHITE, (int)po.radius * 2, 1);
     }
 
     @Override
