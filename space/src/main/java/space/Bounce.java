@@ -10,7 +10,7 @@ import java.util.List;
 public class Bounce extends Space {
 
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {
-        new Bounce().run(false);
+        new Bounce().run();
     }
 
     @Override
@@ -77,6 +77,21 @@ public class Bounce extends Space {
 
     @Override
     public void mouseWheelMoved(final MouseWheelEvent e) {
+    }
+
+    @Override
+    protected void createPhysicalObjects() {
+        nrOfObjects = 50;
+        setStepSize(1); // One second per iteration
+        for (int i = 0; i < nrOfObjects; i++) {
+            // radius,weight in [1,20]
+            double radiusAndWeight = 1 + 19 * Math.random();
+            //x,y in [max radius, width or height - max radius]
+            Space.add(radiusAndWeight, 20 + 760 * Math.random(), 20 + 760 * Math.random(), 3 - 6 * Math.random(), 3 - 6 * Math.random(), radiusAndWeight);
+        }
+        PhysicalObject.scale = 1;
+        PhysicalObject.centrex = 400;
+        PhysicalObject.centrey = 390; //Must compensate for title bar
     }
 
 }

@@ -16,7 +16,9 @@
           v extract and push down call doStep
           v push down collide (duplicate and delete)
           v push down mouseDragged
-  * Remove isSolarSystem parameter from run()
+  v Remove isSolarSystem parameter from run()
+    v replace boolean parameter with polymorphism
+      v Extract and push down createPhysicalObjects
   v Move weightToColor to Solar
     v Remove isSolarSystem parameter from paintPhysicalObject
       v Align branches in if-test

@@ -98,8 +98,32 @@ public class Solar extends Space implements MouseMotionListener {
         getGraphics().clearRect(0, 0, getWidth(), getHeight());
     }
 
+    @Override
+    protected void createPhysicalObjects() {
+        setStepSize(3600 * 24 * 7);
+
+        double outerLimit = ASTRONOMICAL_UNIT * 20;
+
+        for (int i = 0; i < nrOfObjects; i++) {
+            double angle = randSquare() * 2 * Math.PI;
+            double radius = (0.1 + 0.9 * Math.sqrt(randSquare())) * outerLimit;
+            double weightKilos = 1e3 * PhysicalObject.EARTH_WEIGHT * (Math.pow(0.00001 + 0.99999 * randSquare(), 12));
+            double x = radius * Math.sin(angle);
+            double y = radius * Math.cos(angle);
+            double speedRandom = Math.sqrt(1 / radius) * 2978000*1500 * (0.4 + 0.6 * randSquare());
+
+            double vx = speedRandom * Math.sin(angle - Math.PI / 2);
+            double vy = speedRandom * Math.cos(angle - Math.PI / 2);
+            add(weightKilos, x, y, vx, vy, 1);
+        }
+
+        PhysicalObject.scale = outerLimit / getWidth();
+
+        add(PhysicalObject.EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
+    }
+
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {
-        new Solar().run(true);
+        new Solar().run();
     }
 
 }
