@@ -8,7 +8,7 @@ public class TestGravitation {
 
     @Test
     public void gravitationalFormulaIsCorrect() throws Exception {
-        Space s = new Space();
+        Space s = new Solar();
         s.setStepSize(1);
         double earthsWeight = 5.9736e24;
         int earthsRadius = 6371000;
