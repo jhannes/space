@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,6 +110,14 @@ public class Solar extends Space implements MouseMotionListener {
     @Override
     protected void doPaintObject(Graphics2D graphics, PhysicalObject po) {
         po.paintPhysicalObject(graphics, !false);
+    }
+
+    @Override
+    public void mouseWheelMoved(final MouseWheelEvent e) {
+        if (!false) {
+            PhysicalObject.scale = PhysicalObject.scale + PhysicalObject.scale * (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
+            getGraphics().clearRect(0, 0, getWidth(), getHeight());
+        }
     }
 
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {

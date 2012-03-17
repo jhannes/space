@@ -1,6 +1,7 @@
 package space;
 
 import java.awt.Graphics2D;
+import java.awt.event.MouseWheelEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +90,14 @@ public class Bounce extends Space {
     @Override
     protected void doPaintObject(Graphics2D graphics, PhysicalObject po) {
         po.paintPhysicalObject(graphics, !true);
+    }
+
+    @Override
+    public void mouseWheelMoved(final MouseWheelEvent e) {
+        if (!true) {
+            PhysicalObject.scale = PhysicalObject.scale + PhysicalObject.scale * (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
+            getGraphics().clearRect(0, 0, getWidth(), getHeight());
+        }
     }
 
 }

@@ -152,12 +152,7 @@ public abstract class Space extends JFrame implements MouseWheelListener,
     protected abstract void doStep();
 
     @Override
-    public void mouseWheelMoved(final MouseWheelEvent e) {
-        if (!IS_BOUNCING_BALLS) {
-            PhysicalObject.scale = PhysicalObject.scale + PhysicalObject.scale * (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
-            getGraphics().clearRect(0, 0, getWidth(), getHeight());
-        }
-    }
+    public abstract void mouseWheelMoved(final MouseWheelEvent e);
 
     @Override
     public void mouseDragged(final MouseEvent e) {
