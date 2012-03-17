@@ -1,0 +1,7 @@
+* Separate Solar system and bouncing ball logic
+  * Delete IS_BOUNCING_BALL flagg
+    * Move main method of Space to subclasses
+      v Create subclasses of "Space"
+      * Remove IS_BOUNCING_BALLS if-test in main
+        v Extract main method logic to non-static method
+        * Make IS_BOUNCING_BALLS into an argument
