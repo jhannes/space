@@ -57,6 +57,10 @@ public class Space extends JFrame implements MouseWheelListener,
     }
 
     public static void main(String[] args) throws InterruptedException, InvocationTargetException {
+        new Space().run();
+    }
+
+    protected void run() throws InterruptedException, InvocationTargetException {
         final Space space = new Space();
         space.addMouseWheelListener(space);
         space.addMouseMotionListener(space);
