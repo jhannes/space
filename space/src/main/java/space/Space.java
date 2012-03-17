@@ -22,6 +22,7 @@ public class Space extends JFrame implements MouseWheelListener,
     private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
     static boolean IS_BREAKOUT = false; // Opens bottom, only active if IS_BOUNCING_BALLS is true
 
+    static boolean IS_BOUNCING_BALLS = false;
 
     private static final long serialVersionUID = 1532817796535372081L;
 
@@ -47,7 +48,7 @@ public class Space extends JFrame implements MouseWheelListener,
                 graphics.clearRect(0, 0, getWidth(), getHeight());
             }
             for (PhysicalObject po : objects) {
-                po.paintPhysicalObject(graphics);
+                po.paintPhysicalObject(graphics, !IS_BOUNCING_BALLS);
                 String string = "Objects:" + objects.size() + " scale:" + PhysicalObject.scale + " steps:" + step + " frame rate: " + frameRate;
                 setTitle(string);
             }
@@ -57,7 +58,7 @@ public class Space extends JFrame implements MouseWheelListener,
     }
 
     public static void main(String[] args) throws InterruptedException, InvocationTargetException {
-        new Space().run(!PhysicalObject.IS_BOUNCING_BALLS);
+        new Space().run(!IS_BOUNCING_BALLS);
     }
 
     protected void run(boolean isSolarSystem) throws InterruptedException, InvocationTargetException {
@@ -144,7 +145,7 @@ public class Space extends JFrame implements MouseWheelListener,
     }
 
     public void step() {
-        if (!PhysicalObject.IS_BOUNCING_BALLS) {
+        if (!IS_BOUNCING_BALLS) {
             for (PhysicalObject aff : objects) {
                 double fx = 0;
                 double fy = 0;
@@ -185,7 +186,7 @@ public class Space extends JFrame implements MouseWheelListener,
             for (PhysicalObject other : objects) {
                 if (one == other || remove.contains(other))
                     continue;
-                if (!PhysicalObject.IS_BOUNCING_BALLS) {
+                if (!IS_BOUNCING_BALLS) {
                     if (Math.sqrt(Math.pow(one.x - other.x, 2) + Math.pow(one.y - other.y, 2)) < 5e9) {
                         one.absorb(other);
                         remove.add(other);
@@ -199,7 +200,7 @@ public class Space extends JFrame implements MouseWheelListener,
                 }
             }
             // Wall collision reverses speed in that direction
-            if (PhysicalObject.IS_BOUNCING_BALLS) {
+            if (IS_BOUNCING_BALLS) {
                 if (one.x - one.radius < 0) {
                     one.vx = -one.vx;
                 }
@@ -222,7 +223,7 @@ public class Space extends JFrame implements MouseWheelListener,
 
     @Override
     public void mouseWheelMoved(final MouseWheelEvent e) {
-        if (!PhysicalObject.IS_BOUNCING_BALLS) {
+        if (!IS_BOUNCING_BALLS) {
             PhysicalObject.scale = PhysicalObject.scale + PhysicalObject.scale * (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
             getGraphics().clearRect(0, 0, getWidth(), getHeight());
         }
@@ -233,7 +234,7 @@ public class Space extends JFrame implements MouseWheelListener,
 
     @Override
     public void mouseDragged(final MouseEvent e) {
-        if (!PhysicalObject.IS_BOUNCING_BALLS) {
+        if (!IS_BOUNCING_BALLS) {
             if (lastDrag == null) {
                 lastDrag = e.getPoint();
             }

@@ -15,7 +15,6 @@ public class PhysicalObject {
     public double vx;
     public double vy;
     public double radius;
-    static boolean IS_BOUNCING_BALLS = false;
     public static final double EARTH_WEIGHT = 5.9736e24;
     static JFrame frame;
     static double scale = 10;
@@ -115,8 +114,8 @@ public class PhysicalObject {
                 + mass + ",radius=" + radius;
     }
 
-    public void paintPhysicalObject(Graphics2D graphics) {
-        if (!PhysicalObject.IS_BOUNCING_BALLS) {
+    public void paintPhysicalObject(Graphics2D graphics, boolean isSolarSystem) {
+        if (isSolarSystem) {
             graphics.setColor(PhysicalObject.weightToColor(mass));
             int diameter = mass >= PhysicalObject.EARTH_WEIGHT * 10000 ? 7 : 2;
             int xtmp = (int) ((x - PhysicalObject.centrex) / PhysicalObject.scale + PhysicalObject.frame.getSize().width / 2);
