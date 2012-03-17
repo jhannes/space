@@ -21,8 +21,6 @@ public abstract class Space extends JFrame implements MouseWheelListener,
     private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
     protected static boolean IS_BREAKOUT = false; // Opens bottom, only active if IS_BOUNCING_BALLS is true
 
-    protected static boolean IS_BOUNCING_BALLS = false;
-
     private static final long serialVersionUID = 1532817796535372081L;
 
     protected static final double G = 6.67428e-11; // m3/kgs2

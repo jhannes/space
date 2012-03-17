@@ -15,7 +15,7 @@ public class Solar extends Space implements MouseMotionListener {
 
     @Override
     public void mouseDragged(final MouseEvent e) {
-        if (!IS_BOUNCING_BALLS) {
+        if (!false) {
             if (lastDrag == null) {
                 lastDrag = e.getPoint();
             }

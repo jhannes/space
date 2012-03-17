@@ -9,10 +9,11 @@
       v Convert IS_BOUNCING_BALLS into non-static field in Space
         v Move IS_BOUNCING_BALLS to Space
           v Convert IS_BOUNCING_BALLS to parameter in PhysicalObject
-      * Replace IS_BOUNCING_BALLS with constants
-        * push down mouseWheelMoved
-        v extract and subclass call to paintPhysicalObject
-        v extract and push down call doStep
-        v push down collide (duplicate and delete)
-        v push down mouseDragged
+      * Remove dead code
+        v Replace IS_BOUNCING_BALLS with constants
+          v push down mouseWheelMoved
+          v extract and subclass call to paintPhysicalObject
+          v extract and push down call doStep
+          v push down collide (duplicate and delete)
+          v push down mouseDragged
         
