@@ -13,4 +13,5 @@
         * extract and subclass call to paintPhysicalObject
         * extract and push down call doStep
         * push down collide
-        * push down mouseDragged
+        v push down mouseDragged
+        

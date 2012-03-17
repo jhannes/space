@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -229,26 +228,12 @@ public class Space extends JFrame implements MouseWheelListener,
         }
     }
 
-    private static Point lastDrag = null;
-
-
     @Override
     public void mouseDragged(final MouseEvent e) {
-        if (!IS_BOUNCING_BALLS) {
-            if (lastDrag == null) {
-                lastDrag = e.getPoint();
-            }
-            PhysicalObject.centrex = PhysicalObject.centrex - ((e.getX() - lastDrag.x) * PhysicalObject.scale);
-            PhysicalObject.centrey = PhysicalObject.centrey - ((e.getY() - lastDrag.y) * PhysicalObject.scale);
-            lastDrag = e.getPoint();
-            getGraphics().clearRect(0, 0, getWidth(), getHeight());
-        }
     }
-
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        lastDrag = null;
     }
 
 
