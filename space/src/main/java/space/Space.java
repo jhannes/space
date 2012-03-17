@@ -57,17 +57,17 @@ public class Space extends JFrame implements MouseWheelListener,
     }
 
     public static void main(String[] args) throws InterruptedException, InvocationTargetException {
-        new Space().run();
+        new Space().run(!PhysicalObject.IS_BOUNCING_BALLS);
     }
 
-    protected void run() throws InterruptedException, InvocationTargetException {
+    protected void run(boolean isSolarSystem) throws InterruptedException, InvocationTargetException {
         final Space space = new Space();
         space.addMouseWheelListener(space);
         space.addMouseMotionListener(space);
         space.addKeyListener(space);
         space.setSize(800, 820);
 
-        if (!PhysicalObject.IS_BOUNCING_BALLS) {
+        if (isSolarSystem) {
             space.setStepSize(3600 * 24 * 7);
 
             double outerLimit = ASTRONOMICAL_UNIT * 20;
