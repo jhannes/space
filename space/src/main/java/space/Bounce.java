@@ -19,7 +19,7 @@ public class Bounce extends Space {
             for (PhysicalObject other : objects) {
                 if (one == other || remove.contains(other))
                     continue;
-                if (!IS_BOUNCING_BALLS) {
+                if (!true) {
                     if (Math.sqrt(Math.pow(one.x - other.x, 2) + Math.pow(one.y - other.y, 2)) < 5e9) {
                         one.absorb(other);
                         remove.add(other);
@@ -33,7 +33,7 @@ public class Bounce extends Space {
                 }
             }
             // Wall collision reverses speed in that direction
-            if (IS_BOUNCING_BALLS) {
+            if (true) {
                 if (one.x - one.radius < 0) {
                     one.vx = -one.vx;
                 }
