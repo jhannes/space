@@ -122,6 +122,7 @@ public class Space extends JFrame implements MouseWheelListener,
         while (true) {
             final long start = System.currentTimeMillis();
             EventQueue.invokeAndWait(new Runnable() {
+                @Override
                 public void run() {
                     space.collide();
                     space.step();
@@ -236,6 +237,7 @@ public class Space extends JFrame implements MouseWheelListener,
     }
 
 
+    @Override
     public void mouseWheelMoved(final MouseWheelEvent e) {
         if (!IS_BOUNCING_BALLS) {
             scale = scale + scale * (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
@@ -246,6 +248,7 @@ public class Space extends JFrame implements MouseWheelListener,
     private static Point lastDrag = null;
 
 
+    @Override
     public void mouseDragged(final MouseEvent e) {
         if (!IS_BOUNCING_BALLS) {
             if (lastDrag == null) {
@@ -259,19 +262,23 @@ public class Space extends JFrame implements MouseWheelListener,
     }
 
 
+    @Override
     public void mouseMoved(MouseEvent e) {
         lastDrag = null;
     }
 
 
+    @Override
     public void keyPressed(KeyEvent e) {
     }
 
 
+    @Override
     public void keyReleased(KeyEvent e) {
     }
 
 
+    @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyChar() == 'w')
             showWake = !showWake;
