@@ -1,5 +1,6 @@
 package space;
 
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -71,6 +72,43 @@ public class Solar extends Space implements MouseMotionListener {
             }
         }
         objects.removeAll(remove);
+    }
+
+    @Override
+    protected void doStep() {
+        if (!false) {
+            for (PhysicalObject aff : objects) {
+                double fx = 0;
+                double fy = 0;
+                for (PhysicalObject oth : objects) {
+                    if (aff == oth)
+                        continue;
+                    double[] d = new double[]{aff.x - oth.x, aff.y - oth.y};
+                    double r2 = Math.pow(d[0], 2) + Math.pow(d[1], 2);
+                    double f = G * aff.mass * oth.mass / r2;
+                    double sqrtOfR2 = Math.sqrt(r2);
+                    fx += f * d[0] / sqrtOfR2;
+                    fy += f * d[1] / sqrtOfR2;
+                }
+                double ax = fx / aff.mass;
+                double ay = fy / aff.mass;
+                aff.x = aff.x - ax * Math.pow(PhysicalObject.seconds, 2) / 2 + aff.vx * PhysicalObject.seconds;
+                aff.y = aff.y - ay * Math.pow(PhysicalObject.seconds, 2) / 2 + aff.vy * PhysicalObject.seconds;
+                aff.vx = aff.vx - ax * PhysicalObject.seconds;
+                aff.vy = aff.vy - ay * PhysicalObject.seconds;
+            }
+        } else {
+            for (PhysicalObject physicalObject : objects) {
+                physicalObject.x = physicalObject.x + physicalObject.vx * PhysicalObject.seconds;
+                physicalObject.y = physicalObject.y + physicalObject.vy * PhysicalObject.seconds;
+            }
+
+        }
+    }
+
+    @Override
+    protected void doPaintObject(Graphics2D graphics, PhysicalObject po) {
+        po.paintPhysicalObject(graphics, !false);
     }
 
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {

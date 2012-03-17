@@ -10,8 +10,8 @@
         v Move IS_BOUNCING_BALLS to Space
           v Convert IS_BOUNCING_BALLS to parameter in PhysicalObject
       * Move isBouncingBalls to subclasses
-        * extract and subclass call to paintPhysicalObject
-        * extract and push down call doStep
-        * push down collide
+        v extract and subclass call to paintPhysicalObject
+        v extract and push down call doStep
+        v push down collide (duplicate and delete)
         v push down mouseDragged
         
