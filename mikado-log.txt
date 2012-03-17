@@ -5,11 +5,11 @@
       v Remove IS_BOUNCING_BALLS if-test in main
         v Extract main method logic to non-static method
         v Make IS_BOUNCING_BALLS into an argument
-    * Convert if statements into polymorphism
+    v Convert if statements into polymorphism
       v Convert IS_BOUNCING_BALLS into non-static field in Space
         v Move IS_BOUNCING_BALLS to Space
           v Convert IS_BOUNCING_BALLS to parameter in PhysicalObject
-      * Remove dead code
+      v Remove dead code
         v Replace IS_BOUNCING_BALLS with constants
           v push down mouseWheelMoved
           v extract and subclass call to paintPhysicalObject
