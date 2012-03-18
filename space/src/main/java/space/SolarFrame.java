@@ -24,7 +24,7 @@ public class SolarFrame extends SpaceFrame {
         addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
-                PhysicalObject.scale = PhysicalObject.scale + PhysicalObject.scale * (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
+                space.scale += space.scale * (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
                 getGraphics().clearRect(0, 0, getWidth(), getHeight());
             }
         });
@@ -34,8 +34,8 @@ public class SolarFrame extends SpaceFrame {
                 if (lastDrag == null) {
                     lastDrag = e.getPoint();
                 }
-                PhysicalObject.centrex = PhysicalObject.centrex - ((e.getX() - lastDrag.x) * PhysicalObject.scale);
-                PhysicalObject.centrey = PhysicalObject.centrey - ((e.getY() - lastDrag.y) * PhysicalObject.scale);
+                space.centrex -= ((e.getX() - lastDrag.x) * space.scale);
+                space.centrey -= ((e.getY() - lastDrag.y) * space.scale);
                 lastDrag = e.getPoint();
                 getGraphics().clearRect(0, 0, getWidth(), getHeight());
             }

@@ -10,12 +10,7 @@ public class PhysicalObject {
     public double vx;
     public double vy;
     public double radius;
-    public static final double EARTH_WEIGHT = 5.9736e24;
-    static double scale = 10;
-    static double centrey = 0.0;
-    static double centrex = 0.0;
     public static double seconds = 1;
-
     public PhysicalObject(double weightKilos, double x, double y, double vx,
                           double vy, double radius) {
         this.mass = weightKilos;
@@ -40,7 +35,7 @@ public class PhysicalObject {
         // find collision point by backstepping
 
         //backstep increment
-        final double s = -PhysicalObject.seconds / 10;
+        final double s = -seconds / 10;
         //total backstep size to be found incrementally
         double dt = 0;
         //vector from this object to the other object

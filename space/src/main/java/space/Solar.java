@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Solar extends Space  {
 
+    public static final double EARTH_WEIGHT = 5.9736e24;
+
     @Override
     protected void collide() {
         List<PhysicalObject> remove = new ArrayList<PhysicalObject>();
@@ -50,10 +52,9 @@ public class Solar extends Space  {
 
     @Override
     protected void doPaintObject(Display display, PhysicalObject po) {
-        double radius = (po.mass >= PhysicalObject.EARTH_WEIGHT * 10000) ? 3.5 : 1;
-        double scale = PhysicalObject.scale;
-        double centerX = (po.x - PhysicalObject.centrex) / scale + width / 2;
-        double centerY = (po.y - PhysicalObject.centrey) / scale + height / 2;
+        double radius = (po.mass >= Solar.EARTH_WEIGHT * 10000) ? 3.5 : 1;
+        double centerX = (po.x - centrex) / scale + width / 2;
+        double centerY = (po.y - centrey) / scale + height / 2;
 
         display.fillCircle(centerX, centerY, radius, weightToColor(po.mass));
     }
@@ -80,7 +81,7 @@ public class Solar extends Space  {
         for (int i = 0; i < nrOfObjects; i++) {
             double angle = randSquare() * 2 * Math.PI;
             double radius = (0.1 + 0.9 * Math.sqrt(randSquare())) * outerLimit;
-            double weightKilos = 1e3 * PhysicalObject.EARTH_WEIGHT * (Math.pow(0.00001 + 0.99999 * randSquare(), 12));
+            double weightKilos = 1e3 * Solar.EARTH_WEIGHT * (Math.pow(0.00001 + 0.99999 * randSquare(), 12));
             double x = radius * Math.sin(angle);
             double y = radius * Math.cos(angle);
             double speedRandom = Math.sqrt(1 / radius) * 2978000*1500 * (0.4 + 0.6 * randSquare());
@@ -90,9 +91,8 @@ public class Solar extends Space  {
             add(weightKilos, x, y, vx, vy, 1);
         }
 
-        PhysicalObject.scale = outerLimit / width;
-
-        add(PhysicalObject.EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
+        scale = outerLimit / width;
+        add(Solar.EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
     }
 
 }

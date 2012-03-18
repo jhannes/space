@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 public class SpaceFrame extends JFrame {
 
-    private final Space space;
+    protected final Space space;
 
     public SpaceFrame(Space space) {
         setBackground(Color.BLACK);
@@ -23,7 +23,6 @@ public class SpaceFrame extends JFrame {
         if (original != null) {
             SwingDisplay display = new SwingDisplay(getWidth(), getHeight());
             space.paintSceneTo(display);
-            setTitle(space.getTitleString());
             display.drawBufferTo(original);
         }
     }
@@ -34,6 +33,7 @@ public class SpaceFrame extends JFrame {
     }
 
     protected void run() throws InvocationTargetException, InterruptedException {
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {

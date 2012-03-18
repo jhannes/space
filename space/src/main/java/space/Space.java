@@ -17,8 +17,14 @@ public abstract class Space {
 
     protected int height;
 
+    double centrex = 0.0;
+
+    double centrey = 0.0;
+
+    double scale = 10;
+
     protected String getTitleString() {
-        return "Objects:" + objects.size() + " scale:" + PhysicalObject.scale + " steps:" + step + " frame rate: " + frameRate;
+        return "Objects:" + objects.size() + " scale:" + scale + " steps:" + step + " frame rate: " + frameRate;
     }
 
     protected abstract void doPaintObject(Display display, PhysicalObject po);
