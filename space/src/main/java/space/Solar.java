@@ -79,12 +79,12 @@ public class Solar extends Space implements MouseWheelListener,
 
     @Override
     protected void doPaintObject(Graphics2D graphics, PhysicalObject po, Display display) {
-        int diameter = po.mass >= PhysicalObject.EARTH_WEIGHT * 10000 ? 7 : 2;
+        double radius = (po.mass >= PhysicalObject.EARTH_WEIGHT * 10000) ? 3.5 : 1;
         double scale = PhysicalObject.scale;
-        graphics.setColor(weightToColor(po.mass));
-        double x = ((po.x - PhysicalObject.centrex) / scale + getSize().width / 2)-diameter/2;
-        double y = ((po.y - PhysicalObject.centrey) / scale + getSize().height / 2)-diameter/2;
-        graphics.fillOval((int)x, (int)y, diameter, diameter);
+        double centerX = (po.x - PhysicalObject.centrex) / scale + getSize().width / 2;
+        double centerY = (po.y - PhysicalObject.centrey) / scale + getSize().height / 2;
+
+        display.fillCircle(centerX, centerY, radius, weightToColor(po.mass));
     }
 
     public static Color weightToColor(double weight) {

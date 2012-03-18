@@ -11,7 +11,8 @@ public class SwingDisplay implements Display {
         this.graphics = graphics;
     }
 
-    protected void fillCircle(double centerX, double centerY, double radius, Color color) {
+    @Override
+    public void fillCircle(double centerX, double centerY, double radius, Color color) {
         graphics.setColor(color);
         graphics.fillOval((int)(centerX- radius), (int)(centerY-radius), (int)radius * 2, (int)radius * 2);
     }
