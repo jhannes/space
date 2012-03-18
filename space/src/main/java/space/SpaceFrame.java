@@ -52,7 +52,7 @@ public class SpaceFrame extends JFrame {
                 @Override
                 public void run() {
                     space.collide();
-                    space.doStep();
+                    space.step();
                     space.step++;
                     paint(getGraphics());
                     setTitle(space.getTitleString());

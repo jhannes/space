@@ -25,7 +25,7 @@ public class Solar extends Space  {
     }
 
     @Override
-    protected void doStep() {
+    protected void step() {
         for (PhysicalObject aff : objects) {
             double fx = 0;
             double fy = 0;

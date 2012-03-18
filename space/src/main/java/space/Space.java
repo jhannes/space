@@ -52,13 +52,7 @@ public abstract class Space extends JFrame {
         return physicalObject;
     }
 
-    public void step() {
-        doStep();
-        step++;
-        paint(getGraphics());
-    }
-
-    protected abstract void doStep();
+    protected abstract void step();
 
     public void paintSceneTo(Display display) {
         if (!showWake) {
