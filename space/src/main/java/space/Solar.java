@@ -1,38 +1,11 @@
 package space;
 
 import java.awt.Color;
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solar extends Space implements MouseWheelListener,
-    MouseMotionListener, KeyListener {
-
-    private static Point lastDrag = null;
-
-    @Override
-    public void mouseDragged(final MouseEvent e) {
-        if (lastDrag == null) {
-            lastDrag = e.getPoint();
-        }
-        PhysicalObject.centrex = PhysicalObject.centrex - ((e.getX() - lastDrag.x) * PhysicalObject.scale);
-        PhysicalObject.centrey = PhysicalObject.centrey - ((e.getY() - lastDrag.y) * PhysicalObject.scale);
-        lastDrag = e.getPoint();
-        getGraphics().clearRect(0, 0, getWidth(), getHeight());
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        lastDrag = null;
-    }
-
+public class Solar extends Space  {
 
     @Override
     protected void collide() {
@@ -100,12 +73,6 @@ public class Solar extends Space implements MouseWheelListener,
     }
 
     @Override
-    public void mouseWheelMoved(final MouseWheelEvent e) {
-        PhysicalObject.scale = PhysicalObject.scale + PhysicalObject.scale * (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
-        getGraphics().clearRect(0, 0, getWidth(), getHeight());
-    }
-
-    @Override
     protected void createPhysicalObjects() {
         setStepSize(3600 * 24 * 7);
 
@@ -129,30 +96,9 @@ public class Solar extends Space implements MouseWheelListener,
         add(PhysicalObject.EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
     }
 
-    @Override
-    protected void run() throws InterruptedException, InvocationTargetException {
-        addMouseWheelListener(this);
-        addMouseMotionListener(this);
-        addKeyListener(this);
-        super.run();
-    }
 
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {
         new Solar().run();
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        if (e.getKeyChar() == 'w')
-            showWake = !showWake;
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
     }
 
 }

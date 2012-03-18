@@ -1,5 +1,6 @@
 package space;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -12,6 +13,7 @@ public class SpaceFrame extends JFrame {
     private final Space space;
 
     public SpaceFrame(Space space) {
+        setBackground(Color.BLACK);
         this.space = space;
     }
 
@@ -19,7 +21,7 @@ public class SpaceFrame extends JFrame {
         new SpaceFrame(new Bounce()).run();
     }
 
-    private void run() throws InvocationTargetException, InterruptedException {
+    protected void run() throws InvocationTargetException, InterruptedException {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
