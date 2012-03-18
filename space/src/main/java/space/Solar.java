@@ -1,7 +1,6 @@
 package space;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -78,7 +77,7 @@ public class Solar extends Space implements MouseWheelListener,
     }
 
     @Override
-    protected void doPaintObject(Graphics2D graphics, PhysicalObject po, Display display) {
+    protected void doPaintObject(Display display, PhysicalObject po) {
         double radius = (po.mass >= PhysicalObject.EARTH_WEIGHT * 10000) ? 3.5 : 1;
         double scale = PhysicalObject.scale;
         double centerX = (po.x - PhysicalObject.centrex) / scale + getSize().width / 2;

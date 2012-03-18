@@ -10,8 +10,8 @@
           v Create SpaceFrame
         v Copy Space.run into SpaceFrame
         * Move Bounce KeyListener to SpaceFrame
-        * Remove use of Graphics2D in doPaintObject
-          * Hide implementaiton of doPaintObject in Solar
+        v Remove Graphics2D in doPaintObject
+          v Hide implementation of doPaintObject in Solar
           v Hide implementation of doPaintObject
             v extract Display.fillCircle
     * Remove Swing imports from Solar

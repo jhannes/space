@@ -37,7 +37,7 @@ public abstract class Space extends JFrame {
                 graphics.clearRect(0, 0, getWidth(), getHeight());
             }
             for (PhysicalObject po : objects) {
-                doPaintObject(graphics, po, display);
+                doPaintObject(display, po);
             }
             setTitle(getTitleString());
             original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
@@ -48,7 +48,7 @@ public abstract class Space extends JFrame {
         return "Objects:" + objects.size() + " scale:" + PhysicalObject.scale + " steps:" + step + " frame rate: " + frameRate;
     }
 
-    protected abstract void doPaintObject(Graphics2D graphics, PhysicalObject po, Display display);
+    protected abstract void doPaintObject(Display display, PhysicalObject po);
 
     protected void run() throws InterruptedException, InvocationTargetException {
         setSize(800, 820);

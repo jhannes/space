@@ -1,7 +1,6 @@
 package space;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +70,7 @@ public class Bounce extends Space {
     }
 
     @Override
-    protected void doPaintObject(Graphics2D graphics, PhysicalObject po, Display display) {
+    protected void doPaintObject(Display display, PhysicalObject po) {
         double centerX = (po.x - PhysicalObject.centrex) + getSize().width / 2;
         double centerY = (po.y - PhysicalObject.centrey) + getSize().height / 2;
         display.fillCircle(centerX, centerY, po.radius, Color.WHITE);
