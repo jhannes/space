@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -109,10 +108,5 @@ public abstract class Space extends JFrame {
     }
 
     protected abstract void doStep();
-
-    public void keyTyped(KeyEvent e) {
-        if (e.getKeyChar() == 'w')
-            showWake = !showWake;
-    }
 
 }

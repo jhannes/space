@@ -143,6 +143,12 @@ public class Solar extends Space implements MouseWheelListener,
     }
 
     @Override
+    public void keyTyped(KeyEvent e) {
+        if (e.getKeyChar() == 'w')
+            showWake = !showWake;
+    }
+
+    @Override
     public void keyPressed(KeyEvent e) {
     }
 
