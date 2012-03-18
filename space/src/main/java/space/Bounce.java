@@ -2,23 +2,15 @@ package space;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bounce extends Space implements KeyListener  {
+public class Bounce extends Space {
     protected static final boolean IS_BREAKOUT = false; // Opens bottom, only active if IS_BOUNCING_BALLS is true
 
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {
         new Bounce().run();
-    }
-
-    @Override
-    protected void run() throws InterruptedException, InvocationTargetException {
-        addKeyListener(this);
-        super.run();
     }
 
     @Override
@@ -101,17 +93,4 @@ public class Bounce extends Space implements KeyListener  {
         PhysicalObject.centrey = 390; //Must compensate for title bar
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        if (e.getKeyChar() == 'w')
-            showWake = !showWake;
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
 }

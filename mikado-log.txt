@@ -9,6 +9,8 @@
       * Move Swing logic in Space to SpaceFrame
           v Create SpaceFrame
         v Copy Space.run into SpaceFrame
+        * Move Bounce KeyListener to SpaceFrame
+        * Hide implementation of doPaintObject
     * Remove Swing imports from Solar
 
 v Separate Solar system and bouncing ball logic
