@@ -17,7 +17,7 @@ public abstract class Space extends JFrame {
     private static final long serialVersionUID = 1532817796535372081L;
 
     protected static final double G = 6.67428e-11; // m3/kgs2
-    protected static List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
+    protected List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
     static boolean showWake = false;
     static int step = 0;
     protected static int nrOfObjects = 75;
