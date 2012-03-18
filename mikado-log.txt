@@ -1,5 +1,17 @@
-* Separate Solar system and bouncing ball logic
-  * Delete IS_BOUNCING_BALL flagg
+* Separate Domain Logic from Swing
+  * Remove Swing imports from PhysicalObject
+    * Remove JFrame from PhysicalObject
+    * Remove paint method from PhysicalObject
+  * Remove Swing imports from Space
+    * Remove Swing imports from Bounce
+      * Move paint to BounceFrame
+      * Move listener BounceFrame
+    * Remove Swing imports from Bounce
+      * Move paint to new SolarFrame
+      * Move listener to new SolarFrame
+
+v Separate Solar system and bouncing ball logic
+  v Delete IS_BOUNCING_BALL flagg
     v Move main method of Space to subclasses
       v Create subclasses of "Space"
       v Remove IS_BOUNCING_BALLS if-test in main
@@ -25,3 +37,5 @@
         v Make Color into a parameter
         v Make scale a parameter
         v Make diameter a parameter
+  v Remove spurious fields in PhysicalObject
+  
