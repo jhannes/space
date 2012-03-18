@@ -2,8 +2,8 @@
   v Remove Swing imports from PhysicalObject
     v Remove JFrame from PhysicalObject
     v Remove paint method from PhysicalObject
-  * Remove Swing imports from Space
-    * Remove JFrame superclass from Space
+  v Remove Swing imports from Space
+    v Remove JFrame superclass from Space
       v Remove step() from Space
         v use doStep instead of step in test
       v Remove use of getSize and getWidth from Space and subclasses and Implement Space.setSize

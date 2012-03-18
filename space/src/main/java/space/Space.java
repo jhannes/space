@@ -1,14 +1,10 @@
 package space;
 
-import javax.swing.JFrame;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Space extends JFrame {
+public abstract class Space {
     protected static final double ASTRONOMICAL_UNIT = 149597870.7e3;
-
-    private static final long serialVersionUID = 1532817796535372081L;
 
     protected static final double G = 6.67428e-11; // m3/kgs2
     protected List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
@@ -20,10 +16,6 @@ public abstract class Space extends JFrame {
     protected int width;
 
     protected int height;
-
-    public Space() {
-        setBackground(Color.BLACK);
-    }
 
     protected String getTitleString() {
         return "Objects:" + objects.size() + " scale:" + PhysicalObject.scale + " steps:" + step + " frame rate: " + frameRate;
@@ -63,11 +55,9 @@ public abstract class Space extends JFrame {
         }
     }
 
-    @Override
     public void setSize(int width, int height) {
         this.width = width;
         this.height = height;
-        super.setSize(width, height);
     }
 
 }
