@@ -45,9 +45,9 @@ public abstract class Space extends JFrame implements MouseWheelListener,
             }
             for (PhysicalObject po : objects) {
                 doPaintObject(graphics, po);
-                String string = "Objects:" + objects.size() + " scale:" + PhysicalObject.scale + " steps:" + step + " frame rate: " + frameRate;
-                setTitle(string);
             }
+            String string = "Objects:" + objects.size() + " scale:" + PhysicalObject.scale + " steps:" + step + " frame rate: " + frameRate;
+            setTitle(string);
             original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
         }
     }
