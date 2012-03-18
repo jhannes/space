@@ -2,8 +2,11 @@ package space;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JFrame;
@@ -16,6 +19,25 @@ public class SpaceFrame extends JFrame {
         setBackground(Color.BLACK);
         this.space = space;
     }
+
+    @Override
+    public void paint(Graphics original) {
+        if (original != null) {
+            BufferedImage buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics2D graphics = buffer.createGraphics();
+            SwingDisplay display = new SwingDisplay(graphics);
+
+            if (!space.showWake) {
+                graphics.clearRect(0, 0, getWidth(), getHeight());
+            }
+            for (PhysicalObject po : space.objects) {
+                space.doPaintObject(display, po);
+            }
+            setTitle(space.getTitleString());
+            original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
+        }
+    }
+
 
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {
         new SpaceFrame(new Bounce()).run();
@@ -42,7 +64,7 @@ public class SpaceFrame extends JFrame {
                     space.collide();
                     space.doStep();
                     space.step++;
-                    space.paint(getGraphics());
+                    paint(getGraphics());
                     setTitle(space.getTitleString());
                 }
             });

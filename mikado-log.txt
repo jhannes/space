@@ -5,7 +5,7 @@
   * Remove Swing imports from Space
     v Push down Listeners
       v Extract add*Listener calls in run to subclasses
-    * Remove Swing imports from Bounce
+    v Remove Swing imports from Bounce
       v Move Swing logic in Space to SpaceFrame
           v Create SpaceFrame
         v Copy Space.run into SpaceFrame
@@ -14,7 +14,7 @@
           v Hide implementation of doPaintObject in Solar
           v Hide implementation of doPaintObject
             v extract Display.fillCircle
-    * Remove Swing imports from Solar
+    v Remove Swing imports from Solar
       v Move eventhandlers to new class SolarFrame
         v Fix backgroundcolor on drag
 

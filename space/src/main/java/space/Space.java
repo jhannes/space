@@ -3,9 +3,6 @@ package space;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,24 +21,6 @@ public abstract class Space extends JFrame {
 
     public Space() {
         setBackground(Color.BLACK);
-    }
-
-    @Override
-    public void paint(Graphics original) {
-        if (original != null) {
-            BufferedImage buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D graphics = buffer.createGraphics();
-            SwingDisplay display = new SwingDisplay(graphics);
-
-            if (!showWake) {
-                graphics.clearRect(0, 0, getWidth(), getHeight());
-            }
-            for (PhysicalObject po : objects) {
-                doPaintObject(display, po);
-            }
-            setTitle(getTitleString());
-            original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
-        }
     }
 
     protected String getTitleString() {
