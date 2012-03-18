@@ -32,7 +32,6 @@ public abstract class Space extends JFrame implements MouseWheelListener,
 
     public Space() {
         setBackground(Color.BLACK);
-        PhysicalObject.frame = this;
     }
 
     @Override

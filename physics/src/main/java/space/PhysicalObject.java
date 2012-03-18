@@ -1,7 +1,5 @@
 package space;
 
-import javax.swing.JFrame;
-
 import static java.lang.Math.sqrt;
 
 public class PhysicalObject {
@@ -13,7 +11,6 @@ public class PhysicalObject {
     public double vy;
     public double radius;
     public static final double EARTH_WEIGHT = 5.9736e24;
-    static JFrame frame;
     static double scale = 10;
     static double centrey = 0.0;
     static double centrex = 0.0;
