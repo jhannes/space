@@ -93,7 +93,7 @@ public class Bounce extends Space implements KeyListener  {
             // radius,weight in [1,20]
             double radiusAndWeight = 1 + 19 * Math.random();
             //x,y in [max radius, width or height - max radius]
-            Space.add(radiusAndWeight, 20 + 760 * Math.random(), 20 + 760 * Math.random(), 3 - 6 * Math.random(), 3 - 6 * Math.random(), radiusAndWeight);
+            add(radiusAndWeight, 20 + 760 * Math.random(), 20 + 760 * Math.random(), 3 - 6 * Math.random(), 3 - 6 * Math.random(), radiusAndWeight);
         }
         PhysicalObject.scale = 1;
         PhysicalObject.centrex = 400;

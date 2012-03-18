@@ -93,7 +93,7 @@ public abstract class Space extends JFrame {
         PhysicalObject.seconds = seconds;
     }
 
-    public static PhysicalObject add(double weightKilos, double x, double y,
+    public PhysicalObject add(double weightKilos, double x, double y,
                                      double vx, double vy, double radius) {
         PhysicalObject physicalObject = new PhysicalObject(weightKilos, x, y,
                 vx, vy, radius);
