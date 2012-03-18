@@ -22,13 +22,7 @@ public class SpaceFrame extends JFrame {
     public void paint(Graphics original) {
         if (original != null) {
             SwingDisplay display = new SwingDisplay(getWidth(), getHeight());
-
-            if (!space.showWake) {
-                display.clear();
-            }
-            for (PhysicalObject po : space.objects) {
-                space.doPaintObject(display, po);
-            }
+            space.paintSceneTo(display);
             setTitle(space.getTitleString());
             display.drawBufferTo(original);
         }

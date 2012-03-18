@@ -91,4 +91,13 @@ public abstract class Space extends JFrame {
 
     protected abstract void doStep();
 
+    public void paintSceneTo(Display display) {
+        if (!showWake) {
+            display.clear();
+        }
+        for (PhysicalObject po : objects) {
+            doPaintObject(display, po);
+        }
+    }
+
 }
