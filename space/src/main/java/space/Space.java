@@ -12,16 +12,15 @@ import java.util.List;
 
 public abstract class Space extends JFrame {
     protected static final double ASTRONOMICAL_UNIT = 149597870.7e3;
-    protected static boolean IS_BREAKOUT = false; // Opens bottom, only active if IS_BOUNCING_BALLS is true
 
     private static final long serialVersionUID = 1532817796535372081L;
 
     protected static final double G = 6.67428e-11; // m3/kgs2
     protected List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
-    static boolean showWake = false;
-    static int step = 0;
-    protected static int nrOfObjects = 75;
-    static int frameRate = 25;
+    boolean showWake = false;
+    int step = 0;
+    protected int nrOfObjects = 75;
+    int frameRate = 25;
 
     public Space() {
         setBackground(Color.BLACK);

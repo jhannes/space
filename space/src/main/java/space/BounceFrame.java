@@ -50,18 +50,18 @@ public class BounceFrame extends JFrame {
                 public void run() {
                     space.collide();
                     space.doStep();
-                    Space.step++;
+                    space.step++;
                     paint(getGraphics());
                 }
             });
             try {
-                long ahead = 1000 / Space.frameRate - (System.currentTimeMillis() - start);
+                long ahead = 1000 / space.frameRate - (System.currentTimeMillis() - start);
                 if (ahead > 50) {
                     Thread.sleep(ahead);
-                    if(Space.frameRate<25) Space.frameRate++;
+                    if(space.frameRate<25) space.frameRate++;
                 } else {
                     Thread.sleep(50);
-                    Space.frameRate--;
+                    space.frameRate--;
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
