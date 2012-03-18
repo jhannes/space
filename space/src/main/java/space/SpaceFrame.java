@@ -3,10 +3,8 @@ package space;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JFrame;
@@ -23,18 +21,16 @@ public class SpaceFrame extends JFrame {
     @Override
     public void paint(Graphics original) {
         if (original != null) {
-            BufferedImage buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D graphics = buffer.createGraphics();
-            SwingDisplay display = new SwingDisplay(graphics);
+            SwingDisplay display = new SwingDisplay(getWidth(), getHeight());
 
             if (!space.showWake) {
-                graphics.clearRect(0, 0, getWidth(), getHeight());
+                display.clear();
             }
             for (PhysicalObject po : space.objects) {
                 space.doPaintObject(display, po);
             }
             setTitle(space.getTitleString());
-            original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
+            display.drawBufferTo(original);
         }
     }
 

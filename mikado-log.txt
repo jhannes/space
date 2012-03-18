@@ -3,6 +3,8 @@
     v Remove JFrame from PhysicalObject
     v Remove paint method from PhysicalObject
   * Remove Swing imports from Space
+    * Move paint to SpaceFrame
+    * Move buffered painting into SwingDisplay
     v Push down Listeners
       v Extract add*Listener calls in run to subclasses
     v Remove Swing imports from Bounce
