@@ -55,9 +55,6 @@ public abstract class Space extends JFrame implements MouseWheelListener,
     protected abstract void doPaintObject(Graphics2D graphics, PhysicalObject po);
 
     protected void run() throws InterruptedException, InvocationTargetException {
-        addMouseWheelListener(this);
-        addMouseMotionListener(this);
-        addKeyListener(this);
         setSize(800, 820);
 
         createPhysicalObjects();

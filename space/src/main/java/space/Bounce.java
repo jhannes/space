@@ -14,6 +14,14 @@ public class Bounce extends Space {
     }
 
     @Override
+    protected void run() throws InterruptedException, InvocationTargetException {
+        addMouseWheelListener(this);
+        addMouseMotionListener(this);
+        addKeyListener(this);
+        super.run();
+    }
+
+    @Override
     protected void collide() {
         List<PhysicalObject> remove = new ArrayList<PhysicalObject>();
         for (PhysicalObject one : objects) {
