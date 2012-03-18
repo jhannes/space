@@ -38,10 +38,13 @@ public abstract class Space extends JFrame {
             for (PhysicalObject po : objects) {
                 doPaintObject(graphics, po);
             }
-            String string = "Objects:" + objects.size() + " scale:" + PhysicalObject.scale + " steps:" + step + " frame rate: " + frameRate;
-            setTitle(string);
+            setTitle(getTitleString());
             original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
         }
+    }
+
+    protected String getTitleString() {
+        return "Objects:" + objects.size() + " scale:" + PhysicalObject.scale + " steps:" + step + " frame rate: " + frameRate;
     }
 
     protected abstract void doPaintObject(Graphics2D graphics, PhysicalObject po);

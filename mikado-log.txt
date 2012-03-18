@@ -7,7 +7,8 @@
       v Extract add*Listener calls in run to subclasses
     * Remove Swing imports from Bounce
       * Move Swing logic in Space to SpaceFrame
-        * Create SpaceFrame
+          v Create SpaceFrame
+        v Copy Space.run into SpaceFrame
     * Remove Swing imports from Solar
 
 v Separate Solar system and bouncing ball logic
