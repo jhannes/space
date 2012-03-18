@@ -17,6 +17,10 @@ public abstract class Space extends JFrame {
     protected int nrOfObjects = 75;
     int frameRate = 25;
 
+    protected int width;
+
+    protected int height;
+
     public Space() {
         setBackground(Color.BLACK);
     }
@@ -63,6 +67,13 @@ public abstract class Space extends JFrame {
         for (PhysicalObject po : objects) {
             doPaintObject(display, po);
         }
+    }
+
+    @Override
+    public void setSize(int width, int height) {
+        this.width = width;
+        this.height = height;
+        super.setSize(width, height);
     }
 
 }

@@ -52,8 +52,8 @@ public class Solar extends Space  {
     protected void doPaintObject(Display display, PhysicalObject po) {
         double radius = (po.mass >= PhysicalObject.EARTH_WEIGHT * 10000) ? 3.5 : 1;
         double scale = PhysicalObject.scale;
-        double centerX = (po.x - PhysicalObject.centrex) / scale + getSize().width / 2;
-        double centerY = (po.y - PhysicalObject.centrey) / scale + getSize().height / 2;
+        double centerX = (po.x - PhysicalObject.centrex) / scale + width / 2;
+        double centerY = (po.y - PhysicalObject.centrey) / scale + height / 2;
 
         display.fillCircle(centerX, centerY, radius, weightToColor(po.mass));
     }
@@ -90,7 +90,7 @@ public class Solar extends Space  {
             add(weightKilos, x, y, vx, vy, 1);
         }
 
-        PhysicalObject.scale = outerLimit / getWidth();
+        PhysicalObject.scale = outerLimit / width;
 
         add(PhysicalObject.EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
     }

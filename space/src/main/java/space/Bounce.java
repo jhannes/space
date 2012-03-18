@@ -66,8 +66,8 @@ public class Bounce extends Space {
 
     @Override
     protected void doPaintObject(Display display, PhysicalObject po) {
-        double centerX = (po.x - PhysicalObject.centrex) + getSize().width / 2;
-        double centerY = (po.y - PhysicalObject.centrey) + getSize().height / 2;
+        double centerX = (po.x - PhysicalObject.centrex) + width / 2;
+        double centerY = (po.y - PhysicalObject.centrey) + height / 2;
         display.fillCircle(centerX, centerY, po.radius, Color.WHITE);
     }
 
