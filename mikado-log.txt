@@ -6,13 +6,9 @@
     v Push down Listeners
       v Extract add*Listener calls in run to subclasses
     * Remove Swing imports from Bounce
-      v Move paint to BounceFrame
-      * Move listener BounceFrame
-      * Move animation to BounceFrame (?)
-        v Duplicate animate code to BounceFrame
-    * Remove Swing imports from Bounce
-      * Move paint to new SolarFrame
-      * Move listener to new SolarFrame
+      * Move Swing logic in Space to SpaceFrame
+        * Create SpaceFrame
+    * Remove Swing imports from Solar
 
 v Separate Solar system and bouncing ball logic
   v Delete IS_BOUNCING_BALL flagg
