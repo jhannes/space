@@ -6,18 +6,12 @@ import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Space extends JFrame implements MouseWheelListener,
-        MouseMotionListener, KeyListener {
+public abstract class Space extends JFrame {
     protected static final double ASTRONOMICAL_UNIT = 149597870.7e3;
     protected static boolean IS_BREAKOUT = false; // Opens bottom, only active if IS_BOUNCING_BALLS is true
 
@@ -116,29 +110,6 @@ public abstract class Space extends JFrame implements MouseWheelListener,
 
     protected abstract void doStep();
 
-    @Override
-    public abstract void mouseWheelMoved(final MouseWheelEvent e);
-
-    @Override
-    public void mouseDragged(final MouseEvent e) {
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-    }
-
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
-
-
-    @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyChar() == 'w')
             showWake = !showWake;

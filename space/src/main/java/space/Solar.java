@@ -3,14 +3,18 @@ package space;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solar extends Space implements MouseMotionListener {
+public class Solar extends Space implements MouseWheelListener,
+    MouseMotionListener, KeyListener {
 
     private static Point lastDrag = null;
 
@@ -126,8 +130,24 @@ public class Solar extends Space implements MouseMotionListener {
         add(PhysicalObject.EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
     }
 
+    @Override
+    protected void run() throws InterruptedException, InvocationTargetException {
+        addMouseWheelListener(this);
+        addMouseMotionListener(this);
+        addKeyListener(this);
+        super.run();
+    }
+
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {
         new Solar().run();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 
 }

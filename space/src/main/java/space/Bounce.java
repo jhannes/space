@@ -2,12 +2,13 @@ package space;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.event.MouseWheelEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bounce extends Space {
+public class Bounce extends Space implements KeyListener  {
 
     public static void main(String[] args) throws InvocationTargetException, InterruptedException {
         new Bounce().run();
@@ -15,8 +16,6 @@ public class Bounce extends Space {
 
     @Override
     protected void run() throws InterruptedException, InvocationTargetException {
-        addMouseWheelListener(this);
-        addMouseMotionListener(this);
         addKeyListener(this);
         super.run();
     }
@@ -87,10 +86,6 @@ public class Bounce extends Space {
     }
 
     @Override
-    public void mouseWheelMoved(final MouseWheelEvent e) {
-    }
-
-    @Override
     protected void createPhysicalObjects() {
         nrOfObjects = 50;
         setStepSize(1); // One second per iteration
@@ -105,4 +100,15 @@ public class Bounce extends Space {
         PhysicalObject.centrey = 390; //Must compensate for title bar
     }
 
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+
+    }
 }

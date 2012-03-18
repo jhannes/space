@@ -37,8 +37,6 @@ public class BounceFrame extends JFrame {
     }
 
     public void run() throws InvocationTargetException, InterruptedException {
-        space.addMouseWheelListener(space);
-        space.addMouseMotionListener(space);
         space.addKeyListener(space);
         space.setSize(800, 820);
         setSize(800, 820);
