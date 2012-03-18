@@ -4,6 +4,8 @@
     v Remove paint method from PhysicalObject
   * Remove Swing imports from Space
     * Move paint to SpaceFrame
+    * Remove animation from Space
+      * Remove main methods from Space subclasses
     v Move buffered painting into SwingDisplay
     v Move business logic for painting into Space
     v Push down Listeners

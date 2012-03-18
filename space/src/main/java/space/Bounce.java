@@ -1,16 +1,11 @@
 package space;
 
 import java.awt.Color;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bounce extends Space {
     protected static final boolean IS_BREAKOUT = false; // Opens bottom, only active if IS_BOUNCING_BALLS is true
-
-    public static void main(String[] args) throws InvocationTargetException, InterruptedException {
-        new Bounce().run();
-    }
 
     @Override
     protected void collide() {

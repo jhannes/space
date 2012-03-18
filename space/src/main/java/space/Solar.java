@@ -1,7 +1,6 @@
 package space;
 
 import java.awt.Color;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,11 +93,6 @@ public class Solar extends Space  {
         PhysicalObject.scale = outerLimit / getWidth();
 
         add(PhysicalObject.EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
-    }
-
-
-    public static void main(String[] args) throws InvocationTargetException, InterruptedException {
-        new Solar().run();
     }
 
 }

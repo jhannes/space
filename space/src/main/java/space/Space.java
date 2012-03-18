@@ -2,8 +2,6 @@ package space;
 
 import javax.swing.JFrame;
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,39 +26,6 @@ public abstract class Space extends JFrame {
     }
 
     protected abstract void doPaintObject(Display display, PhysicalObject po);
-
-    protected void run() throws InterruptedException, InvocationTargetException {
-        setSize(800, 820);
-
-        createPhysicalObjects();
-        setVisible(true);
-        animate();
-    }
-
-    protected void animate() throws InterruptedException, InvocationTargetException {
-        while (true) {
-            final long start = System.currentTimeMillis();
-            EventQueue.invokeAndWait(new Runnable() {
-                @Override
-                public void run() {
-                    collide();
-                    step();
-                }
-            });
-            try {
-                long ahead = 1000 / frameRate - (System.currentTimeMillis() - start);
-                if (ahead > 50) {
-                    Thread.sleep(ahead);
-                    if(frameRate<25) frameRate++;
-                } else {
-                    Thread.sleep(50);
-                    frameRate--;
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     protected abstract void createPhysicalObjects();
 
