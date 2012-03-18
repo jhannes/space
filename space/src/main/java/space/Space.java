@@ -25,10 +25,10 @@ public abstract class Space extends JFrame implements MouseWheelListener,
 
     protected static final double G = 6.67428e-11; // m3/kgs2
     protected static List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
-    private static boolean showWake = false;
-    private static int step = 0;
+    static boolean showWake = false;
+    static int step = 0;
     protected static int nrOfObjects = 75;
-    private static int frameRate = 25;
+    static int frameRate = 25;
 
     public Space() {
         setBackground(Color.BLACK);
@@ -51,7 +51,6 @@ public abstract class Space extends JFrame implements MouseWheelListener,
             }
             original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
         }
-
     }
 
     protected abstract void doPaintObject(Graphics2D graphics, PhysicalObject po);
@@ -64,6 +63,10 @@ public abstract class Space extends JFrame implements MouseWheelListener,
 
         createPhysicalObjects();
         setVisible(true);
+        animate();
+    }
+
+    protected void animate() throws InterruptedException, InvocationTargetException {
         while (true) {
             final long start = System.currentTimeMillis();
             EventQueue.invokeAndWait(new Runnable() {

@@ -4,8 +4,9 @@
     * Remove paint method from PhysicalObject
   * Remove Swing imports from Space
     * Remove Swing imports from Bounce
-      * Move paint to BounceFrame
+      v Move paint to BounceFrame
       * Move listener BounceFrame
+      * Move animation to BounceFrame (?)
     * Remove Swing imports from Bounce
       * Move paint to new SolarFrame
       * Move listener to new SolarFrame
