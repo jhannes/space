@@ -75,8 +75,12 @@ public class Solar extends Space implements MouseMotionListener {
 
     @Override
     protected void doPaintObject(Graphics2D graphics, PhysicalObject po) {
-        po.paintPhysicalObject(graphics, weightToColor(po.mass), po.mass >= PhysicalObject.EARTH_WEIGHT * 10000 ? 7 : 2,
-            PhysicalObject.scale);
+        int diameter = po.mass >= PhysicalObject.EARTH_WEIGHT * 10000 ? 7 : 2;
+        double scale = PhysicalObject.scale;
+        graphics.setColor(weightToColor(po.mass));
+        double x = ((po.x - PhysicalObject.centrex) / scale + getSize().width / 2)-diameter/2;
+        double y = ((po.y - PhysicalObject.centrey) / scale + getSize().height / 2)-diameter/2;
+        graphics.fillOval((int)x, (int)y, diameter, diameter);
     }
 
     public static Color weightToColor(double weight) {

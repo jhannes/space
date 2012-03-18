@@ -1,8 +1,5 @@
 package space;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-
 import javax.swing.JFrame;
 
 import static java.lang.Math.sqrt;
@@ -112,17 +109,6 @@ public class PhysicalObject {
     public String toString() {
         return "x=" + x + ",y=" + y + ",vx=" + vx + ",vy=" + vy + ",mass="
                 + mass + ",radius=" + radius;
-    }
-
-    public void paintPhysicalObject(Graphics2D graphics, Color color, int diameter, double scale) {
-        graphics.setColor(color);
-        int xtmp = (int) ((x - PhysicalObject.centrex) / scale + PhysicalObject.frame.getSize().width / 2);
-        int ytmp = (int) ((y - PhysicalObject.centrey) / scale + PhysicalObject.frame.getSize().height / 2);
-        graphics.fillOval(
-                xtmp-diameter/2,
-                ytmp-diameter/2,
-                diameter,
-                diameter);
     }
 
 }
