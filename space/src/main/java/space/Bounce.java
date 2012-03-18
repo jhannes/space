@@ -71,11 +71,10 @@ public class Bounce extends Space {
     }
 
     @Override
-    protected void doPaintObject(Graphics2D graphics, PhysicalObject po) {
-        graphics.setColor(Color.WHITE);
-        double x = ((po.x - PhysicalObject.centrex) + getSize().width / 2)- po.radius;
-        double y = ((po.y - PhysicalObject.centrey) + getSize().height / 2)-po.radius;
-        graphics.fillOval((int)x, (int)y, (int)po.radius * 2, (int)po.radius * 2);
+    protected void doPaintObject(Graphics2D graphics, PhysicalObject po, Display display) {
+        double centerX = (po.x - PhysicalObject.centrex) + getSize().width / 2;
+        double centerY = (po.y - PhysicalObject.centrey) + getSize().height / 2;
+        new SwingDisplay(graphics).fillCircle(centerX, centerY, po.radius, Color.WHITE);
     }
 
     @Override
