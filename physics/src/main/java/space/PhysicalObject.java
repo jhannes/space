@@ -100,4 +100,13 @@ public class PhysicalObject {
                 + mass + ",radius=" + radius;
     }
 
+    public void applyForce(double fx, double fy, double seconds) {
+        double ax = fx / mass;
+        double ay = fy / mass;
+        x = x - ax * seconds * seconds / 2 + vx * seconds;
+        y = y - ay * seconds * seconds / 2 + vy * seconds;
+        vx -= ax * seconds;
+        vy -= ay * seconds;
+    }
+
 }

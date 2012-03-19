@@ -45,7 +45,24 @@ public abstract class Space {
         return physicalObject;
     }
 
-    protected abstract void move();
+    protected void applyGravityForce() {
+        for (PhysicalObject aff : objects) {
+            double fx = 0;
+            double fy = 0;
+            for (PhysicalObject oth : objects) {
+                if (aff == oth)
+                    continue;
+                double[] d = new double[]{aff.x - oth.x, aff.y - oth.y};
+                double r2 = Math.pow(d[0], 2) + Math.pow(d[1], 2);
+                double f = G * aff.mass * oth.mass / r2;
+                double sqrtOfR2 = Math.sqrt(r2);
+                fx += f * d[0] / sqrtOfR2;
+                fy += f * d[1] / sqrtOfR2;
+            }
+            aff.applyForce(fx, fy, seconds);
+        }
+    }
+
 
     public void paintSceneTo(Display display) {
         if (!showWake) {
@@ -63,7 +80,7 @@ public abstract class Space {
 
     public void step() {
         collide();
-        move();
+        applyGravityForce();
         step++;
     }
 

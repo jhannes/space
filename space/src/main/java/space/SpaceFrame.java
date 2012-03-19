@@ -3,6 +3,8 @@ package space;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.InvocationTargetException;
@@ -41,9 +43,14 @@ public class SpaceFrame extends JFrame {
                     space.showWake = !space.showWake;
             }
         });
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                space.setSize(getWidth(), getHeight());
+            }
+        });
         setSize(800, 820);
 
-        space.setSize(800, 820);
         space.createPhysicalObjects();
         setVisible(true);
         while (true) {

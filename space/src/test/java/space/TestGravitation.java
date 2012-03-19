@@ -14,12 +14,12 @@ public class TestGravitation {
         int earthsRadius = 6371000;
         PhysicalObject earth = s.add(earthsWeight, 0, -earthsRadius, 0, 0, 1);
         PhysicalObject lump = s.add(1, 0, 10, 0, 0, 1);
-        s.move();
+        s.applyGravityForce();
         assertEquals(10 - 9.82 / 2, lump.y, 0.02);
         assertEquals(-9.82, lump.vy, 0.02);
         assertEquals(-earthsRadius, earth.y, 0.02);
         assertEquals(0, earth.vy, 0.02);
-        s.move();
+        s.applyGravityForce();
         assertEquals(10 - 4 * 9.82 / 2, lump.y, 0.02);
         assertEquals(-9.82 * 2, lump.vy, 0.02);
         assertEquals(-earthsRadius, earth.y, 0.02);

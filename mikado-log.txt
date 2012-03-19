@@ -1,10 +1,11 @@
-* Separate Domain Logic from Swing
+v Separate Domain Logic from Swing
   v ADD setDefaultCloseOperation(EXIT_ON_CLOSE); !!!!!
-  * Cleanup
+  v Cleanup
+    v BUG: Resize event
     v Make scale, centerX and centerY non-static
       v Move scale, centerX, centerY to Space
     v Move EARTH_MASS to Solar
-    * Move dragging logic to space (?)
+    x Move dragging logic to space (?)
     v Combine step and collide and step++
     v move second to Space
   v Remove Swing imports from PhysicalObject
