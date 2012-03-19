@@ -51,9 +51,7 @@ public class SpaceFrame extends JFrame {
             EventQueue.invokeAndWait(new Runnable() {
                 @Override
                 public void run() {
-                    space.collide();
                     space.step();
-                    space.step++;
                     paint(getGraphics());
                     setTitle(space.getTitleString());
                 }

@@ -6,7 +6,9 @@ import java.util.List;
 
 public class Solar extends Space  {
 
-    public static final double EARTH_WEIGHT = 5.9736e24;
+    private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
+
+    private static final double EARTH_WEIGHT = 5.9736e24;
 
     @Override
     protected void collide() {
@@ -27,7 +29,7 @@ public class Solar extends Space  {
     }
 
     @Override
-    protected void step() {
+    protected void move() {
         for (PhysicalObject aff : objects) {
             double fx = 0;
             double fy = 0;
@@ -43,10 +45,10 @@ public class Solar extends Space  {
             }
             double ax = fx / aff.mass;
             double ay = fy / aff.mass;
-            aff.x = aff.x - ax * Math.pow(PhysicalObject.seconds, 2) / 2 + aff.vx * PhysicalObject.seconds;
-            aff.y = aff.y - ay * Math.pow(PhysicalObject.seconds, 2) / 2 + aff.vy * PhysicalObject.seconds;
-            aff.vx = aff.vx - ax * PhysicalObject.seconds;
-            aff.vy = aff.vy - ay * PhysicalObject.seconds;
+            aff.x = aff.x - ax * Math.pow(seconds, 2) / 2 + aff.vx * seconds;
+            aff.y = aff.y - ay * Math.pow(seconds, 2) / 2 + aff.vy * seconds;
+            aff.vx = aff.vx - ax * seconds;
+            aff.vy = aff.vy - ay * seconds;
         }
     }
 
@@ -93,6 +95,11 @@ public class Solar extends Space  {
 
         scale = outerLimit / width;
         add(Solar.EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
+    }
+
+    protected static double randSquare() {
+        double random = Math.random();
+        return random * random;
     }
 
 }

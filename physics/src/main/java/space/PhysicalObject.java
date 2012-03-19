@@ -10,7 +10,6 @@ public class PhysicalObject {
     public double vx;
     public double vy;
     public double radius;
-    public static double seconds = 1;
     public PhysicalObject(double weightKilos, double x, double y, double vx,
                           double vy, double radius) {
         this.mass = weightKilos;
@@ -31,11 +30,9 @@ public class PhysicalObject {
         return this;
     }
 
-    public void hitBy(PhysicalObject other) {
+    public void hitBy(PhysicalObject other, double backstepIncrement) {
         // find collision point by backstepping
 
-        //backstep increment
-        final double s = -seconds / 10;
         //total backstep size to be found incrementally
         double dt = 0;
         //vector from this object to the other object
@@ -44,9 +41,9 @@ public class PhysicalObject {
         double d = sqrt(new12[0] * new12[0] + new12[1] * new12[1]);
         // backstep to find collision point
         while (d < radius + other.radius) {
-            dt += s;
-            new12[0] = new12[0] + s * (vx - other.vx);
-            new12[1] = new12[1] + s * (vy - other.vy);
+            dt += backstepIncrement;
+            new12[0] = new12[0] + backstepIncrement * (vx - other.vx);
+            new12[1] = new12[1] + backstepIncrement * (vy - other.vy);
             d = sqrt(new12[0] * new12[0] + new12[1] * new12[1]);
         }
 

@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Space {
-    protected static final double ASTRONOMICAL_UNIT = 149597870.7e3;
 
     protected static final double G = 6.67428e-11; // m3/kgs2
     protected List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
     boolean showWake = false;
-    int step = 0;
+    private int step = 0;
     protected int nrOfObjects = 75;
     int frameRate = 25;
 
@@ -22,6 +21,7 @@ public abstract class Space {
     double centrey = 0.0;
 
     double scale = 10;
+    protected double seconds = 1;
 
     protected String getTitleString() {
         return "Objects:" + objects.size() + " scale:" + scale + " steps:" + step + " frame rate: " + frameRate;
@@ -33,13 +33,8 @@ public abstract class Space {
 
     protected abstract void collide();
 
-    protected static double randSquare() {
-        double random = Math.random();
-        return random * random;
-    }
-
     public void setStepSize(double seconds) {
-        PhysicalObject.seconds = seconds;
+        this.seconds = seconds;
     }
 
     public PhysicalObject add(double weightKilos, double x, double y,
@@ -50,7 +45,7 @@ public abstract class Space {
         return physicalObject;
     }
 
-    protected abstract void step();
+    protected abstract void move();
 
     public void paintSceneTo(Display display) {
         if (!showWake) {
@@ -64,6 +59,12 @@ public abstract class Space {
     public void setSize(int width, int height) {
         this.width = width;
         this.height = height;
+    }
+
+    public void step() {
+        collide();
+        move();
+        step++;
     }
 
 }

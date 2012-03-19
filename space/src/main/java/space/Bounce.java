@@ -19,7 +19,7 @@ public class Bounce extends Space {
                 double distance = Math.sqrt(Math.pow(one.x - other.x, 2) + Math.pow(one.y - other.y, 2));
                 double collsionDistance = one.radius + other.radius;
                 if (distance < collsionDistance) {
-                    one.hitBy(other);
+                    one.hitBy(other, -seconds / 10);
                 }
             }
             if (one.x - one.radius < 0) {
@@ -41,7 +41,7 @@ public class Bounce extends Space {
     }
 
     @Override
-    protected void step() {
+    protected void move() {
         for (PhysicalObject aff : objects) {
             double fx = 0;
             double fy = 0;
@@ -57,10 +57,10 @@ public class Bounce extends Space {
             }
             double ax = fx / aff.mass;
             double ay = fy / aff.mass;
-            aff.x = aff.x - ax * Math.pow(PhysicalObject.seconds, 2) / 2 + aff.vx * PhysicalObject.seconds;
-            aff.y = aff.y - ay * Math.pow(PhysicalObject.seconds, 2) / 2 + aff.vy * PhysicalObject.seconds;
-            aff.vx = aff.vx - ax * PhysicalObject.seconds;
-            aff.vy = aff.vy - ay * PhysicalObject.seconds;
+            aff.x = aff.x - ax * Math.pow(seconds, 2) / 2 + aff.vx * seconds;
+            aff.y = aff.y - ay * Math.pow(seconds, 2) / 2 + aff.vy * seconds;
+            aff.vx = aff.vx - ax * seconds;
+            aff.vy = aff.vy - ay * seconds;
         }
     }
 

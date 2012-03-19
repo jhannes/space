@@ -5,7 +5,8 @@
       v Move scale, centerX, centerY to Space
     v Move EARTH_MASS to Solar
     * Move dragging logic to space (?)
-    * Combine step and collide and step++
+    v Combine step and collide and step++
+    v move second to Space
   v Remove Swing imports from PhysicalObject
     v Remove JFrame from PhysicalObject
     v Remove paint method from PhysicalObject
