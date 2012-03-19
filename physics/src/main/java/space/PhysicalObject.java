@@ -2,6 +2,8 @@ package space;
 
 import static java.lang.Math.sqrt;
 
+import java.util.List;
+
 public class PhysicalObject {
 
     public double mass;
@@ -10,6 +12,7 @@ public class PhysicalObject {
     public double vx;
     public double vy;
     public double radius;
+    public static final double G = 6.67428e-11; // m3/kgs2
     public PhysicalObject(double weightKilos, double x, double y, double vx,
                           double vy, double radius) {
         this.mass = weightKilos;
@@ -107,6 +110,27 @@ public class PhysicalObject {
         y = y - ay * seconds * seconds / 2 + vy * seconds;
         vx -= ax * seconds;
         vy -= ay * seconds;
+    }
+
+    public static void applyGravityForce(List<PhysicalObject> objects, double seconds) {
+        for (PhysicalObject aff : objects) {
+            aff.applyGravity(objects, seconds);
+        }
+    }
+
+    protected void applyGravity(List<PhysicalObject> objects, double seconds) {
+        double fx = 0;
+        double fy = 0;
+        for (PhysicalObject oth : objects) {
+            if (this == oth) continue;
+            double[] d = new double[]{x - oth.x, y - oth.y};
+            double r2 = Math.pow(d[0], 2) + Math.pow(d[1], 2);
+            double f = G * mass * oth.mass / r2;
+            double sqrtOfR2 = Math.sqrt(r2);
+            fx += f * d[0] / sqrtOfR2;
+            fy += f * d[1] / sqrtOfR2;
+        }
+        applyForce(fx, fy, seconds);
     }
 
 }

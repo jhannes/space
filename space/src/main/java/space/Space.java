@@ -5,7 +5,6 @@ import java.util.List;
 
 public abstract class Space {
 
-    protected static final double G = 6.67428e-11; // m3/kgs2
     protected List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
     boolean showWake = false;
     private int step = 0;
@@ -45,25 +44,6 @@ public abstract class Space {
         return physicalObject;
     }
 
-    protected void applyGravityForce() {
-        for (PhysicalObject aff : objects) {
-            double fx = 0;
-            double fy = 0;
-            for (PhysicalObject oth : objects) {
-                if (aff == oth)
-                    continue;
-                double[] d = new double[]{aff.x - oth.x, aff.y - oth.y};
-                double r2 = Math.pow(d[0], 2) + Math.pow(d[1], 2);
-                double f = G * aff.mass * oth.mass / r2;
-                double sqrtOfR2 = Math.sqrt(r2);
-                fx += f * d[0] / sqrtOfR2;
-                fy += f * d[1] / sqrtOfR2;
-            }
-            aff.applyForce(fx, fy, seconds);
-        }
-    }
-
-
     public void paintSceneTo(Display display) {
         if (!showWake) {
             display.clear();
@@ -80,8 +60,13 @@ public abstract class Space {
 
     public void step() {
         collide();
-        applyGravityForce();
+        PhysicalObject.applyGravityForce(objects, seconds);
         step++;
+    }
+
+    public void drag(int deltaX, int deltaY) {
+        centrex -= (deltaX * scale);
+        centrey -= (deltaY * scale);
     }
 
 }

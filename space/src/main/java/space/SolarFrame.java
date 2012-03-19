@@ -34,8 +34,9 @@ public class SolarFrame extends SpaceFrame {
                 if (lastDrag == null) {
                     lastDrag = e.getPoint();
                 }
-                space.centrex -= ((e.getX() - lastDrag.x) * space.scale);
-                space.centrey -= ((e.getY() - lastDrag.y) * space.scale);
+                int deltaX = e.getX() - lastDrag.x;
+                int deltaY = e.getY() - lastDrag.y;
+                space.drag(deltaX, deltaY);
                 lastDrag = e.getPoint();
                 getGraphics().clearRect(0, 0, getWidth(), getHeight());
             }
